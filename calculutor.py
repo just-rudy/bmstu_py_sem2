@@ -40,11 +40,12 @@ def clear():
 
 
 def check_words(num):
-    canvas.delete("error")
+    answer_field.delete(0, END)
     is_correct = True
     if not check_is_fiveish(num):
         is_correct = False
-        canvas.create_text(120, 70, text="Ошибка ввода. Перепроверьте", tag="error")
+        answer_field.delete(0, END)
+        answer_field.insert(0, "Error")
     return is_correct
 
 
@@ -208,20 +209,16 @@ canvas.create_window(120, 40, window=entry_num, width=200, height=30)
 answer_field = Entry()
 canvas.create_window(120, 100, window=answer_field, width=200, height=30)
 
-btn_clear = Button(text="clear")
-canvas.create_window(300, 40, window=btn_clear, width=100, height=30)
-# btn_clear_1.place(x=260, y=40, width=100, height=30)
-btn_clear.config(command=clear)
-
-btn_calc = SuperButton("=", start_counting, 200, 180, 60, 30, 5)
-btn_minus = SuperButton("-", start_counting, 60, 180, 60, 30, "-")
-btn_plus = SuperButton("+", start_counting, 130, 180, 60, 30, "+") # TODO + place this too
-btn_one = SuperButton("1", start_counting, 130, 180, 60, 30, "1")  # TODO 1 place theese buttons in the right place
-btn_two = SuperButton("2", start_counting, 130, 180, 60, 30, "2")  # TODO 2 place theese buttons in the right place
-btn_three = SuperButton("3", start_counting, 130, 180, 60, 30, "3")  # TODO 3 place theese buttons in the right place
-btn_four = SuperButton("4", start_counting, 130, 180, 60, 30, "4")  # TODO 4 place theese buttons in the right place
-btn_zero = SuperButton("0", start_counting, 130, 180, 60, 30, "0")  # TODO 0 place theese buttons in the right place
-btn_dot = SuperButton(".", start_counting, 130, 180, 60, 30, ".")  # TODO . place theese buttons in the right place
-btn_info = SuperButton("?", show_info, 130, 400, 60, 30, 5)  # TODO . place theese buttons in the right place
+btn_clear = SuperButton("Clear", clear, 300, 40, 100, 30, 5)
+btn_calc = SuperButton("=", start_counting, 300, 180, 80, 40, 5)
+btn_minus = SuperButton("-", start_counting, 60, 180, 80, 40, "-")
+btn_plus = SuperButton("+", start_counting, 180, 180, 80, 40, "+") # TODO + place this too
+btn_one = SuperButton("1", start_counting, 180, 250, 80, 40, "1")  # TODO 1 place theese buttons in the right place
+btn_two = SuperButton("2", start_counting, 300, 250, 80, 40, "2")  # TODO 2 place theese buttons in the right place
+btn_three = SuperButton("3", start_counting, 60, 320, 80, 40, "3")  # TODO 3 place theese buttons in the right place
+btn_four = SuperButton("4", start_counting, 180, 320, 80, 40, "4")  # TODO 4 place theese buttons in the right place
+btn_zero = SuperButton("0", start_counting, 60, 250, 80, 40, "0")  # TODO 0 place theese buttons in the right place
+btn_dot = SuperButton(".", start_counting, 300, 320, 80, 40, ".")  # TODO . place theese buttons in the right place
+btn_info = SuperButton("?", show_info, 300, 100, 80, 40, 5)  # TODO . place theese buttons in the right place
 
 root.mainloop()
